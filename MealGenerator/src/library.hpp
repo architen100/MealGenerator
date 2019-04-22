@@ -28,4 +28,8 @@ private:
     
     // Getters
     std::vector<Recipes> GetRecipes();
+    
+    // Filtering methods
+    std::vector<Recipes> FilterType(std::string type);
+    std::vector<Recipes> FilterDifficulty(std::string diff);
 };

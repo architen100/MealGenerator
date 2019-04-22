@@ -22,4 +22,27 @@ std::vector<Recipes> Library::GetRecipes() {
     return recipes_;
 }
 
+// Filtering Methods
+std::vector<Recipes> Library::FilterType(std::string type) {
+    std::vector<Recipes> toReturn;
+    for (int i = 0; i < recipes_.size(); i++) {
+        if (type == recipes_.at(i).GetType()) {
+            toReturn.push_back(recipes_.at(i));
+        }
+    }
+    return toReturn;
+}
+
+std::vector<Recipes> Library::FilterDifficulty(std::string diff) {
+    std::vector<Recipes> toReturn;
+    for (int i = 0; i < recipes_.size(); i++) {
+        if (diff == recipes_.at(i).GetDifficulty()) {
+            toReturn.push_back(recipes_.at(i));
+        }
+    }
+    return toReturn;
+}
+
+
+
 
