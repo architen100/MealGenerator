@@ -29,6 +29,5 @@ public:
     // Getters
     std::string GetName();
     std::string GetUnit();
-    int GetAmount(): 
-    
+    int GetAmount();
 };
