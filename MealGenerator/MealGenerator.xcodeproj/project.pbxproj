@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0C2C8F82B747F53EA6007BA9 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D55D02C18CE4A7FA07A403B7 /* jsoncpp.cpp */; };
 		106B9A6182DF98E835C09B47 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA20A4B3FEF378FA209B9E4E /* ofxBaseGui.cpp */; };
+		29A168D2226E55A10059FB74 /* ingredients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D0226E55A00059FB74 /* ingredients.cpp */; };
+		29A168D5226E5D320059FB74 /* recipes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D3226E5D320059FB74 /* recipes.cpp */; };
+		29A168D8226E5D4E0059FB74 /* library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D6226E5D4E0059FB74 /* library.cpp */; };
 		413B65A0F41D699F37AB4C06 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99B37C8367EB4811EEF8E78D /* ofxSliderGroup.cpp */; };
 		57753805D2FDAD6521FF2A81 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4ECB0C56B07AE128C7D55CD /* ofxJSONElement.cpp */; };
 		75E465AE7EDAD189B42B8D95 /* ofxInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C357D495FA2C612DDB38FC2 /* ofxInputField.cpp */; };
@@ -41,6 +44,12 @@
 		1824C7C391A2977DC5B741C4 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxColorPicker.cpp; path = ../../../../addons/ofxGui/src/ofxColorPicker.cpp; sourceTree = SOURCE_ROOT; };
 		27CE0445D02D803853EC74E8 /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxPanel.cpp; path = ../../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		29A168CF226E37D80059FB74 /* recipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = recipe.json; path = ../../../../../../recipe.json; sourceTree = "<group>"; };
+		29A168D0226E55A00059FB74 /* ingredients.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ingredients.cpp; sourceTree = "<group>"; };
+		29A168D1226E55A10059FB74 /* ingredients.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ingredients.hpp; sourceTree = "<group>"; };
+		29A168D3226E5D320059FB74 /* recipes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = recipes.cpp; sourceTree = "<group>"; };
+		29A168D4226E5D320059FB74 /* recipes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = recipes.hpp; sourceTree = "<group>"; };
+		29A168D6226E5D4E0059FB74 /* library.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = library.cpp; sourceTree = "<group>"; };
+		29A168D7226E5D4E0059FB74 /* library.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = library.hpp; sourceTree = "<group>"; };
 		30C55AF5EF70A8FD3B3317E0 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = json.h; path = ../../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		44C0961009D36089EBA9C36F /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxGuiGroup.h; path = ../../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		481083C90D96C0AAA580E194 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxButton.h; path = ../../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
@@ -665,6 +674,12 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				29A168D0226E55A00059FB74 /* ingredients.cpp */,
+				29A168D1226E55A10059FB74 /* ingredients.hpp */,
+				29A168D3226E5D320059FB74 /* recipes.cpp */,
+				29A168D4226E5D320059FB74 /* recipes.hpp */,
+				29A168D6226E5D4E0059FB74 /* library.cpp */,
+				29A168D7226E5D4E0059FB74 /* library.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -782,11 +797,14 @@
 				CA7E31A02CAF4836F8551ADD /* ofxColorPicker.cpp in Sources */,
 				CFFFBA144E8160ECC1C97982 /* ofxGuiGroup.cpp in Sources */,
 				75E465AE7EDAD189B42B8D95 /* ofxInputField.cpp in Sources */,
+				29A168D5226E5D320059FB74 /* recipes.cpp in Sources */,
 				81BE400C35825643551A3190 /* ofxLabel.cpp in Sources */,
 				CE6F136678038366969711AB /* ofxPanel.cpp in Sources */,
 				A2953313263AE1234930247E /* ofxSlider.cpp in Sources */,
 				413B65A0F41D699F37AB4C06 /* ofxSliderGroup.cpp in Sources */,
+				29A168D8226E5D4E0059FB74 /* library.cpp in Sources */,
 				B07D6C52C2FE371D2B91739E /* ofxToggle.cpp in Sources */,
+				29A168D2226E55A10059FB74 /* ingredients.cpp in Sources */,
 				0C2C8F82B747F53EA6007BA9 /* jsoncpp.cpp in Sources */,
 				57753805D2FDAD6521FF2A81 /* ofxJSONElement.cpp in Sources */,
 			);

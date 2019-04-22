@@ -1,7 +1,9 @@
+Week 1: 
 Created my project proposal 
 played with the ofxJson library by creating my own json file and playing around with that 
 started experimenting with the ofxDropdown gui
 
+Week 2: 
 Class Structure Overview : 
     1. Week 
         - A vector of days 
@@ -9,6 +11,7 @@ Class Structure Overview :
         .- A vector of recipes 
     3. Recipes 
         - Name 
+        - Type 
         - Ingredients (vector) 
     4. Ingredients 
         - Name 
@@ -21,6 +24,8 @@ Layout Overview :
         - Displays the recipes for each day 
     - Week 
         - A grocery list of all the ingredients 
-        
+
+Week 3: 
+    - Changed my JSON structure so that type is a string instead of an array
         
         
