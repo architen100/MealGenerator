@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2C8F82B747F53EA6007BA9 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D55D02C18CE4A7FA07A403B7 /* jsoncpp.cpp */; };
 		106B9A6182DF98E835C09B47 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA20A4B3FEF378FA209B9E4E /* ofxBaseGui.cpp */; };
+		29523750226E9BED00405679 /* ParserTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2952374F226E9BED00405679 /* ParserTest.cpp */; };
 		29A168D2226E55A10059FB74 /* ingredients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D0226E55A00059FB74 /* ingredients.cpp */; };
 		29A168D5226E5D320059FB74 /* recipes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D3226E5D320059FB74 /* recipes.cpp */; };
 		29A168D8226E5D4E0059FB74 /* library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D6226E5D4E0059FB74 /* library.cpp */; };
@@ -45,6 +46,8 @@
 		0CF404CC30C22DFC004B4ECE /* ofxJSON.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxJSON.h; path = ../../../../addons/ofxJSON/src/ofxJSON.h; sourceTree = SOURCE_ROOT; };
 		1824C7C391A2977DC5B741C4 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxColorPicker.cpp; path = ../../../../addons/ofxGui/src/ofxColorPicker.cpp; sourceTree = SOURCE_ROOT; };
 		27CE0445D02D803853EC74E8 /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxPanel.cpp; path = ../../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
+		2952374D226E9BAF00405679 /* catch3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch3.hpp; path = ../../../../../../Desktop/catch3.hpp; sourceTree = "<group>"; };
+		2952374F226E9BED00405679 /* ParserTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParserTest.cpp; sourceTree = "<group>"; };
 		29A168CF226E37D80059FB74 /* recipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = recipe.json; path = ../../../../../../recipe.json; sourceTree = "<group>"; };
 		29A168D0226E55A00059FB74 /* ingredients.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ingredients.cpp; sourceTree = "<group>"; };
 		29A168D1226E55A10059FB74 /* ingredients.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ingredients.hpp; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		29A168DA226E6C480059FB74 /* day.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = day.hpp; sourceTree = "<group>"; };
 		29A168DF226E73E50059FB74 /* week.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = week.cpp; sourceTree = "<group>"; };
 		29A168E0226E73E50059FB74 /* week.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = week.hpp; sourceTree = "<group>"; };
-		29A168E5226E75B50059FB74 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = "../../../../../../Documents/cpptictactoe-architen100/TicTacToeCPP/TicTacToe2/TicTacToe2/catch.hpp"; sourceTree = "<group>"; };
 		30C55AF5EF70A8FD3B3317E0 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = json.h; path = ../../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		44C0961009D36089EBA9C36F /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxGuiGroup.h; path = ../../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		481083C90D96C0AAA580E194 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxButton.h; path = ../../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
@@ -291,6 +293,14 @@
 				785081894ED0E035B07060DA /* ofxJSONElement.h */,
 			);
 			name = src;
+			sourceTree = "<group>";
+		};
+		2952374E226E9BB800405679 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2952374F226E9BED00405679 /* ParserTest.cpp */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		480A780D8D0308AE4A368801 /* ofxGui */ = {
@@ -664,7 +674,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				29A168E5226E75B50059FB74 /* catch.hpp */,
+				2952374D226E9BAF00405679 /* catch3.hpp */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -692,6 +702,7 @@
 				29A168DA226E6C480059FB74 /* day.hpp */,
 				29A168DF226E73E50059FB74 /* week.cpp */,
 				29A168E0226E73E50059FB74 /* week.hpp */,
+				2952374E226E9BB800405679 /* Tests */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -806,6 +817,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				106B9A6182DF98E835C09B47 /* ofxBaseGui.cpp in Sources */,
+				29523750226E9BED00405679 /* ParserTest.cpp in Sources */,
 				A61B54CA66E926867C59D2C6 /* ofxButton.cpp in Sources */,
 				CA7E31A02CAF4836F8551ADD /* ofxColorPicker.cpp in Sources */,
 				CFFFBA144E8160ECC1C97982 /* ofxGuiGroup.cpp in Sources */,
