@@ -15,9 +15,9 @@
 
 class Ingredients {
 private:
-    static int amount_;
-    static std::string name_;
-    static std::string unit_;
+    int amount_;
+    std::string name_;
+    std::string unit_;
     
 public:
     Ingredients(std::string name, int amount, std::string unit);

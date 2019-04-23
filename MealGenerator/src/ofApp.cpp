@@ -19,13 +19,13 @@ std::vector<Recipes> ofApp::Parser() {
         return recipes;
     }
     
+    // Parsing the Recipe Root
     Json::Reader reader;
     Json::Value root;
     
     reader.parse(recipe_f.getRawString(), root, false);
     
     auto entries = root["recipes"];
-    auto ingredients = root["ingredients"];
     
     for (int i = 0; i < entries.size(); i++) {
         
@@ -35,17 +35,23 @@ std::vector<Recipes> ofApp::Parser() {
         std::string diff = entries[i]["difficulty"].asString();
         std::string type = entries[i]["type"].asString();
         
-        for (int j = 0; j < entries[i]["ingredients"].size(); j++) {
-            std::string name = ingredients[j]["name"].asString();
-            std::string units = ingredients[j]["units"].asString();
-            int amount = ingredients[j]["amount"].asInt();
+        // Second Parser to parse through ingredients array
+        Json::Value data = entries[i]["ingredients"];
+        
+        for (int j = 0; j < data.size(); j++) {
+            std::string name = data[j]["name"].asString();
+            std::cout << name << std::endl;
+            std::string units = data[j]["unit"].asString();
+            std::cout << units << std::endl;
+            int amount = data[j]["amount"].asInt();
+            std::cout << amount << std::endl;
             Ingredients add = Ingredients(name, amount, units);
             to_add.push_back(add);
         }
-        
+
         Recipes add = Recipes(name, type, diff, to_add);
         recipes.push_back(add);
-        
+
         to_add.clear();
     }
     to_return_ = recipes;
@@ -56,8 +62,11 @@ std::vector<Recipes> ofApp::Parser() {
 }
 //--------------------------------------------------------------
 void ofApp::setup(){
-
-    ofApp::Parser();
+    std::cout << "hello";
+    std::vector<Recipes> recipes = ofApp::Parser();
+    Library library = Library(recipes);
+    std::vector<Recipes> new_recipes = library.FilterDifficulty("easy");
+    std::cout << "this is filter size" << new_recipes.size() << std::endl;
 }
 
 //--------------------------------------------------------------
