@@ -64,33 +64,45 @@ void ofApp::setup(){
     std::vector<Recipes> recipes = ofApp::Parser();
     Library library = Library(recipes);
     library_ = library;
-    
-    main_.addListener(this, &ofApp::PressedMain);
-    breakfast_.addListener(this, &ofApp::PressedBreakfast);
-    
-    gui.setup();
-    gui.add(main_.setup("main"));
-    gui.add(breakfast_.setup("breakfast"));
     vector<string> options = {"one", "two", "three", "four"};
-    dropdown = new ofxDatGuiDropdown("select an option", options);
+    
+    gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
+    
+    
+    main_ = gui -> addButton("main");
+    breakfast_ = gui -> addButton("breakfast");
+    dropdown = gui -> addDropdown("Days", options);
+
+    
+    main_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    breakfast_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    
     dropdown -> expand();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    dropdown -> update();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    gui.draw();
-    dropdown -> draw();
+    
+}
+
+//---------------------------------------------------------------
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
+    if (e.target->getLabel() == "main") {
+        PressedMain();
+    }
+    if (e.target -> getLabel() == "breakfast") {
+        PressedBreakfast();
+    }
 }
 
 //---------------------------------------------------------------
 void ofApp::PressedBreakfast() {
     std::vector<Recipes> to_return = library_.FilterType("breakfast");
-    
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
     }

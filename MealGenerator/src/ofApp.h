@@ -29,11 +29,15 @@ private:
 		void gotMessage(ofMessage msg);
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
+    
+    void onButtonEvent(ofxDatGuiButtonEvent e);
+    
     void PressedMain();
     void PressedBreakfast();
-    ofxPanel gui;
-    ofxButton main_;
-    ofxButton breakfast_;
+    
+    ofxDatGui* gui;
+    ofxDatGuiButton* main_;
+    ofxDatGuiButton* breakfast_;
     ofxDatGuiDropdown* dropdown; 
 		
 };
