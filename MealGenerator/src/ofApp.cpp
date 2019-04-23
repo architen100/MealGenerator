@@ -40,11 +40,11 @@ std::vector<Recipes> ofApp::Parser() {
         
         for (int j = 0; j < data.size(); j++) {
             std::string name = data[j]["name"].asString();
-            std::cout << name << std::endl;
+            //std::cout << name << std::endl;
             std::string units = data[j]["unit"].asString();
-            std::cout << units << std::endl;
+            //std::cout << units << std::endl;
             int amount = data[j]["amount"].asInt();
-            std::cout << amount << std::endl;
+            //std::cout << amount << std::endl;
             Ingredients add = Ingredients(name, amount, units);
             to_add.push_back(add);
         }
