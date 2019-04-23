@@ -13,6 +13,11 @@ Library::Library(std::vector<Recipes> r) {
     recipes_ = r;
 }
 
+// Empty constructor for ofApp
+Library::Library() {
+    
+}
+
 void Library::SetRecipes(std::vector<Recipes> r) {
     recipes_ = r;
 }

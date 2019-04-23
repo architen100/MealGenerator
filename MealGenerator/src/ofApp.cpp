@@ -9,6 +9,7 @@
 
 // code derived from https://stackoverflow.com/questions/46203948/reading-array-of-the-json-in-jsoncpp?fbclid=IwAR2_ysL6noXrM6GfDO-zXr5TRqJbhR8q1R_N3q_bMK6WyF9x9bEsNp-5xsc
 std::vector<Recipes> ofApp::Parser() {
+    
     ofxJSONElement recipe_f;
     std::vector<Recipes> recipes;
     
@@ -61,6 +62,16 @@ std::vector<Recipes> ofApp::Parser() {
 //--------------------------------------------------------------
 void ofApp::setup(){
     std::vector<Recipes> recipes = ofApp::Parser();
+    Library library = Library(recipes);
+    library_ = library;
+    
+    std::cout << library.GetRecipes().size();
+//    play.addListener(this, &ofApp::playPressed);
+//    stop.addListener(this, &ofApp::stopPressed);
+//    gui.setup();
+//    gui.add(play.setup("play"));
+//    gui.add(stop.setup("stop"));
+    
 }
 
 //--------------------------------------------------------------
@@ -70,7 +81,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    gui.draw(); 
+}
 
+//---------------------------------------------------------------
+void ofApp::playPressed() {
+    
+}
+
+//----------------------------------------------------------------
+void ofApp::stopPressed() {
+    
 }
 
 //--------------------------------------------------------------

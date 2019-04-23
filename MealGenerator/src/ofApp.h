@@ -3,8 +3,11 @@
 #include "ofMain.h"
 #include "library.hpp"
 #include <vector>
-
+#include "ofxGui.h"
 class ofApp : public ofBaseApp{
+    
+private:
+    Library library_;
 
 	public:
 		void setup();
@@ -24,5 +27,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
+    void playPressed();
+    void stopPressed();
+    ofxPanel gui;
+    ofxButton stop;
+    ofxButton play;
 		
 };

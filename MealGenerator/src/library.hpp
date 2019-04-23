@@ -22,6 +22,7 @@ private:
     
     public :
     Library(std::vector<Recipes> r);
+    Library();
     
     //Setters
     void SetRecipes(std::vector<Recipes> r);
