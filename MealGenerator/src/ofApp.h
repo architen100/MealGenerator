@@ -27,10 +27,10 @@ private:
 		void gotMessage(ofMessage msg);
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
-    void playPressed();
-    void stopPressed();
+    void PressedMain();
+    void PressedBreakfast();
     ofxPanel gui;
-    ofxButton stop;
-    ofxButton play;
+    ofxButton main_;
+    ofxButton breakfast_;
 		
 };

@@ -65,12 +65,12 @@ void ofApp::setup(){
     Library library = Library(recipes);
     library_ = library;
     
-    std::cout << library.GetRecipes().size();
-//    play.addListener(this, &ofApp::playPressed);
-//    stop.addListener(this, &ofApp::stopPressed);
-//    gui.setup();
-//    gui.add(play.setup("play"));
-//    gui.add(stop.setup("stop"));
+    main_.addListener(this, &ofApp::PressedMain);
+    breakfast_.addListener(this, &ofApp::PressedBreakfast);
+    
+    gui.setup();
+    gui.add(main_.setup("main"));
+    gui.add(breakfast_.setup("breakfast"));
     
 }
 
@@ -85,13 +85,21 @@ void ofApp::draw(){
 }
 
 //---------------------------------------------------------------
-void ofApp::playPressed() {
+void ofApp::PressedBreakfast() {
+    std::vector<Recipes> to_return = library_.FilterType("breakfast");
     
+    for (int i = 0; i < to_return.size(); i++) {
+        std::cout << to_return[i].GetName() << std::endl;
+    }
 }
 
 //----------------------------------------------------------------
-void ofApp::stopPressed() {
+void ofApp::PressedMain() {
+    std::vector<Recipes> to_return = library_.FilterType("main");
     
+    for (int i = 0; i < to_return.size(); i++) {
+        std::cout << to_return[i].GetName() << std::endl;
+    }
 }
 
 //--------------------------------------------------------------

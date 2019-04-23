@@ -33,5 +33,4 @@ Layout Overview :
     - Found a way to parse a nested array by creating another Json::Value object which take the root ingredients at entries[ i ]
     - Had problems running my catch because main wasn't working 
         - Bypassed problem by creating my own main for catch 
-        
-        
+    - Had to create an empty constructor so my ofApp can call my library class 
