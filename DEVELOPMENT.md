@@ -34,3 +34,6 @@ Layout Overview :
     - Had problems running my catch because main wasn't working 
         - Bypassed problem by creating my own main for catch 
     - Had to create an empty constructor so my ofApp can call my library class 
+    - Used a new GUI called ofxDatGui 
+        - Played around with the dropdown menu to see if gui worked 
+        - Had to rename the ofDatGui files so it matched the project path
