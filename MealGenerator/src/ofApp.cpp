@@ -56,17 +56,11 @@ std::vector<Recipes> ofApp::Parser() {
     }
     to_return_ = recipes;
     
-    std::cout << to_return_.size();
-    
     return to_return_;
 }
 //--------------------------------------------------------------
 void ofApp::setup(){
-    std::cout << "hello";
     std::vector<Recipes> recipes = ofApp::Parser();
-    Library library = Library(recipes);
-    std::vector<Recipes> new_recipes = library.FilterDifficulty("easy");
-    std::cout << "this is filter size" << new_recipes.size() << std::endl;
 }
 
 //--------------------------------------------------------------

@@ -41,7 +41,7 @@ TEST_CASE("test size of array after flitering by type (main)") {
     std::vector<Recipes> recipes = app->Parser();
     Library library = Library(recipes);
     int size = library.FilterType("main").size();
-    REQUIRE(11 == size);
+    REQUIRE(12 == size);
 }
 
 TEST_CASE("test size of array after flitering by difficulty (easy)") {
@@ -49,7 +49,7 @@ TEST_CASE("test size of array after flitering by difficulty (easy)") {
     std::vector<Recipes> recipes = app->Parser();
     Library library = Library(recipes);
     int size = library.FilterDifficulty("easy").size();
-    REQUIRE(10 == size);
+    REQUIRE(11 == size);
 }
 
 TEST_CASE("test size of array after flitering by difficulty (hard)") {
@@ -57,7 +57,7 @@ TEST_CASE("test size of array after flitering by difficulty (hard)") {
     std::vector<Recipes> recipes = app->Parser();
     Library library = Library(recipes);
     int size = library.FilterDifficulty("hard").size();
-    REQUIRE(9 == size);
+    REQUIRE(8 == size);
 }
 
 
