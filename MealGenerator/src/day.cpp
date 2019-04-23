@@ -6,7 +6,6 @@
 //
 
 #include "day.hpp"
-#include "library.hpp"
 #include <iostream>
 #include <vector>
 

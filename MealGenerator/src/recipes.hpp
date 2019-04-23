@@ -16,6 +16,7 @@
 #endif /* recipes_hpp */
 
 class Recipes{
+    
 private:
     std::string name_;
     std::string type_;

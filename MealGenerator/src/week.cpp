@@ -6,12 +6,10 @@
 //
 
 #include "week.hpp"
-#include "day.hpp"
-#include "ingredients.hpp"
-#include <iostream>
 #include <vector>
+#include <iostream>
 
-Week::Week(std::vector<Day> d, std::vector<Ingredients> i) {
+Week::Week(std::vector<Day> d, std::vector<Ingredients> g) {
     days_ = d;
-    grocery_ = i; 
+    grocery_ = g;
 }

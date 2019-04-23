@@ -12,7 +12,6 @@
 #include <vector>
 #include <iostream>
 #include "day.hpp"
-#include "ingredients.hpp"
 
 #endif /* week_hpp */
 
@@ -20,6 +19,7 @@ class Week {
 private:
     std::vector<Day> days_;
     std::vector<Ingredients> grocery_;
-public:
-    Week(std::vector<Day> d, std::vector<Ingredients> g);
-}
+    
+    public :
+    Week(std::vector<Day> days, std::vector<Ingredients> g);
+};

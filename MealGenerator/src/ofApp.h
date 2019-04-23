@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "recipes.hpp"
+#include <vector>
 
 class ofApp : public ofBaseApp{
 
@@ -20,5 +22,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+        std::vector<Recipes> Parser();
+        std::vector<Recipes> to_return_;
 		
 };

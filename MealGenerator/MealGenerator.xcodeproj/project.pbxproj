@@ -13,7 +13,7 @@
 		29A168D5226E5D320059FB74 /* recipes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D3226E5D320059FB74 /* recipes.cpp */; };
 		29A168D8226E5D4E0059FB74 /* library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D6226E5D4E0059FB74 /* library.cpp */; };
 		29A168DB226E6C480059FB74 /* day.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168D9226E6C480059FB74 /* day.cpp */; };
-		29A168DE226E6E270059FB74 /* week.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168DC226E6E270059FB74 /* week.cpp */; };
+		29A168E1226E73E50059FB74 /* week.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A168DF226E73E50059FB74 /* week.cpp */; };
 		413B65A0F41D699F37AB4C06 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99B37C8367EB4811EEF8E78D /* ofxSliderGroup.cpp */; };
 		57753805D2FDAD6521FF2A81 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4ECB0C56B07AE128C7D55CD /* ofxJSONElement.cpp */; };
 		75E465AE7EDAD189B42B8D95 /* ofxInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C357D495FA2C612DDB38FC2 /* ofxInputField.cpp */; };
@@ -54,8 +54,9 @@
 		29A168D7226E5D4E0059FB74 /* library.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = library.hpp; sourceTree = "<group>"; };
 		29A168D9226E6C480059FB74 /* day.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = day.cpp; sourceTree = "<group>"; };
 		29A168DA226E6C480059FB74 /* day.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = day.hpp; sourceTree = "<group>"; };
-		29A168DC226E6E270059FB74 /* week.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = week.cpp; sourceTree = "<group>"; };
-		29A168DD226E6E270059FB74 /* week.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = week.hpp; sourceTree = "<group>"; };
+		29A168DF226E73E50059FB74 /* week.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = week.cpp; sourceTree = "<group>"; };
+		29A168E0226E73E50059FB74 /* week.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = week.hpp; sourceTree = "<group>"; };
+		29A168E5226E75B50059FB74 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = "../../../../../../Documents/cpptictactoe-architen100/TicTacToeCPP/TicTacToe2/TicTacToe2/catch.hpp"; sourceTree = "<group>"; };
 		30C55AF5EF70A8FD3B3317E0 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = json.h; path = ../../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		44C0961009D36089EBA9C36F /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxGuiGroup.h; path = ../../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		481083C90D96C0AAA580E194 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxButton.h; path = ../../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
@@ -663,6 +664,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				29A168E5226E75B50059FB74 /* catch.hpp */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -688,8 +690,8 @@
 				29A168D7226E5D4E0059FB74 /* library.hpp */,
 				29A168D9226E6C480059FB74 /* day.cpp */,
 				29A168DA226E6C480059FB74 /* day.hpp */,
-				29A168DC226E6E270059FB74 /* week.cpp */,
-				29A168DD226E6E270059FB74 /* week.hpp */,
+				29A168DF226E73E50059FB74 /* week.cpp */,
+				29A168E0226E73E50059FB74 /* week.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -813,7 +815,7 @@
 				CE6F136678038366969711AB /* ofxPanel.cpp in Sources */,
 				A2953313263AE1234930247E /* ofxSlider.cpp in Sources */,
 				413B65A0F41D699F37AB4C06 /* ofxSliderGroup.cpp in Sources */,
-				29A168DE226E6E270059FB74 /* week.cpp in Sources */,
+				29A168E1226E73E50059FB74 /* week.cpp in Sources */,
 				29A168D8226E5D4E0059FB74 /* library.cpp in Sources */,
 				B07D6C52C2FE371D2B91739E /* ofxToggle.cpp in Sources */,
 				29A168D2226E55A10059FB74 /* ingredients.cpp in Sources */,
