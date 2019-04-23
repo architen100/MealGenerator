@@ -71,17 +71,20 @@ void ofApp::setup(){
     gui.setup();
     gui.add(main_.setup("main"));
     gui.add(breakfast_.setup("breakfast"));
-    
+    vector<string> options = {"one", "two", "three", "four"};
+    dropdown = new ofxDatGuiDropdown("select an option", options);
+    dropdown -> expand();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    dropdown -> update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    gui.draw(); 
+    gui.draw();
+    dropdown -> draw();
 }
 
 //---------------------------------------------------------------

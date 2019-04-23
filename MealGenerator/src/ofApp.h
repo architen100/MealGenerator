@@ -4,6 +4,8 @@
 #include "library.hpp"
 #include <vector>
 #include "ofxGui.h"
+#include "ofxDatGui.h"
+
 class ofApp : public ofBaseApp{
     
 private:
@@ -32,5 +34,6 @@ private:
     ofxPanel gui;
     ofxButton main_;
     ofxButton breakfast_;
+    ofxDatGuiDropdown* dropdown; 
 		
 };
