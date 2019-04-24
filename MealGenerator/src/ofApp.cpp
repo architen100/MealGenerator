@@ -70,7 +70,7 @@ void ofApp::setup(){
     
     vector<string> options = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Grocery List"};
     
-    gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
+    gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT );
     
     gui -> setTheme(new ofxDatGuiThemeAutumn);
     
@@ -81,30 +81,19 @@ void ofApp::setup(){
     easy_b_ = gui -> addButton("easy");
     hard_b_ = gui -> addButton("hard");
     dropdown = gui -> addDropdown("Days", options);
+    done_btn = gui -> addButton("Finish Adding");
 
     // Function when button is clicked
     main_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     break_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    done_btn -> onButtonEvent(this, &ofApp::onButtonEvent);
     
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
     scroll -> onScrollViewEvent(this, &ofApp::onScrollViewEvent);
     
-    // Action for Dropdown menu
-    dropdown -> onDropdownEvent(this, &ofApp::onDropdownEvent);
-    
-    // Initialzing gui menu for days
-//    m_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    t_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    w_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    r_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    f_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    s_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    ss_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//    g_g = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
-//
     m_drop = new ofxDatGuiDropdown("Monday", {});
     t_drop = new ofxDatGuiDropdown("Tuesday", {});
     w_drop = new ofxDatGuiDropdown("Wednesday", {});
@@ -116,21 +105,14 @@ void ofApp::setup(){
     
     
     //Set Visibility to False
-    //SetVisibility(10);
+    SetVisibility(10);
     
-    // Setting Position for Scrolls for Menus
-    m_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    t_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    w_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    r_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    f_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    s_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    ss_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
-    g_drop->setPosition(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
     
-//    //Create a button add items
-//    addItem = new ofxDatGuiButton("click to add item");
-//    addItem->onButtonEvent(this, &ofApp::onAddNewItemButtonClick);
+    // Setting Position for DropDown To Show Recipe
+    SetPositionOfDrop();
+    
+    // Action for Dropdown menu
+    dropdown -> onDropdownEvent(this, &ofApp::onDropdownEvent);
 }
 
 //--------------------------------------------------------------
@@ -162,68 +144,68 @@ void ofApp::draw(){
     
 }
 
-//--------------------------------------------------------------
-//void ofApp::onAddNewItemButtonClick(ofxDatGuiButtonEvent e)
-//{
-//    scroll-> add("item " + ofToString(scroll -> getNumItems() + 1));
-//    addItem->setLabel("click to add item - " + ofToString(scroll->getNumItems()) + " items");
-//}
-
+//-------------------------------------------------------------
+void ofApp::SetPositionOfDrop() {
+    m_drop -> setPosition(ofGetScreenWidth()/2 - m_drop->getWidth()/2, ofGetScreenHeight()/2 - m_drop->getHeight()/2 - 100);
+    
+    t_drop -> setPosition(ofGetScreenWidth()/2 - t_drop->getWidth()/2, ofGetScreenHeight()/2 - t_drop->getHeight()/2 - 100);
+    
+    w_drop -> setPosition(ofGetScreenWidth()/2 - w_drop->getWidth()/2, ofGetScreenHeight()/2 - w_drop->getHeight()/2 - 100);
+    
+    r_drop -> setPosition(ofGetScreenWidth()/2 - r_drop->getWidth()/2, ofGetScreenHeight()/2 - r_drop->getHeight()/2 - 100);
+    
+    f_drop -> setPosition(ofGetScreenWidth()/2 - f_drop->getWidth()/2, ofGetScreenHeight()/2 - f_drop->getHeight()/2 - 100);
+    
+    s_drop -> setPosition(ofGetScreenWidth()/2 - s_drop->getWidth()/2, ofGetScreenHeight()/2 - s_drop->getHeight()/2 - 100);
+    
+    ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth()/2, ofGetScreenHeight()/2 - ss_drop->getHeight()/2 - 100);
+    
+    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth()/2, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 100);
+}
 //-------------------------------------------------------------
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     int num = e.child;
     
-    for (int i = 0; i < to_add.size(); i++) {
-        std::cout << to_add[i] << std::endl;
+    day = num;
+    
+    for (int i = 0; i < recipe_add.size(); i++) {
+        std::cout << recipe_add[i] << std::endl;
     }
     
-    std::cout << "this is num " << num << std::endl;
-    
     if (num == 0) {
-        m_drop = new ofxDatGuiDropdown("Monday", to_add);
         m_drop -> setVisible(true);
-        std::cout << "m" << std::endl;
         SetVisibility(num);
     }
     if (num == 1) {
-        t_drop = new ofxDatGuiDropdown("Tuesday", to_add);
         t_drop -> setVisible(true);
-        std::cout << "t" << std::endl;
         SetVisibility(num);
     }
     if (num == 2) {
-        w_drop = new ofxDatGuiDropdown("Wednesday", to_add);
         w_drop -> setVisible(true);
-        std::cout << "w" << std::endl;
         SetVisibility(num);
 
     }
     if (num == 3) {
-        r_drop = new ofxDatGuiDropdown("Thursday", to_add);
         r_drop -> setVisible(true);
         SetVisibility(num);
 
     }
     if (num == 4) {
-        f_drop = new ofxDatGuiDropdown("Friday", to_add);
         f_drop -> setVisible(true);
         SetVisibility(num);
 
     }
     if (num == 5) {
-        s_drop = new ofxDatGuiDropdown("Saturday", to_add);
         s_drop -> setVisible(true);
         SetVisibility(num);
 
     }
     if (num == 6) {
-        ss_drop = new ofxDatGuiDropdown("Sunday", to_add);
         ss_drop -> setVisible(true);
         SetVisibility(num);
 
     }
     if (num == 7) {
-        g_drop = new ofxDatGuiDropdown("Grocery", to_add);
         g_drop -> setVisible(true);
         SetVisibility(num);
     }
@@ -266,12 +248,61 @@ void ofApp::ShowRecipes(std::vector<Recipes> r) {
 
 //--------------------------------------------------------------
 void ofApp::onScrollViewEvent(ofxDatGuiScrollViewEvent e){
-    to_add.push_back(e.target -> getLabel());
+    recipe_add.push_back(e.target -> getLabel());
 }
 
 //---------------------------------------------------------------
-void ofApp::AddRecipe() {
-    
+void ofApp::AddRecipe(int num) {
+    if (num == 0) {
+        m_drop = new ofxDatGuiDropdown("Monday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 1) {
+        t_drop = new ofxDatGuiDropdown("Tuesday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 2) {
+        w_drop = new ofxDatGuiDropdown("Wednesday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 3) {
+        r_drop = new ofxDatGuiDropdown("Thursday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 4) {
+        f_drop = new ofxDatGuiDropdown("Friday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 5) {
+        s_drop = new ofxDatGuiDropdown("Saturday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 6) {
+        ss_drop = new ofxDatGuiDropdown("Sunday", recipe_add);
+        AddIngredients(recipe_add);
+    }
+    if (num == 7) {
+        g_drop = new ofxDatGuiDropdown("Grocery", grocery_list);
+    }
+    recipe_add.clear();
+}
+
+//--------------------------------------------------------------
+void ofApp::AddIngredients(std::vector<string> s) {
+    for (int i = 0; i < s.size(); i++) {
+        
+        for (int j = 0; j < library_.GetRecipes().size(); j++) {
+            
+            if (s[i] == library_.GetRecipes()[j].GetName()) {
+                
+                for (int k = 0; k < library_.GetRecipes()[j].GetIngredients().size(); k++) {
+                    string add = library_.GetRecipes()[j].GetIngredients()[k].GetName() + ": " + std::to_string(library_.GetRecipes()[j].GetIngredients()[k].GetAmount()) + library_.GetRecipes()[j].GetIngredients()[k].GetUnit();
+                    
+                    grocery_list.push_back(add);
+                }
+            }
+        }
+    }
 }
 
 //---------------------------------------------------------------
@@ -295,6 +326,9 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
         std::vector<Recipes> r = PressedHard();
         scroll -> clear();
         ShowRecipes(r);
+    }
+    if (e.target -> getLabel() == "Finish Adding") {
+        AddRecipe(day);
     }
 }
 
@@ -320,59 +354,4 @@ std::vector<Recipes> ofApp::PressedHard() {
 std::vector<Recipes> ofApp::PressedEasy() {
     std::vector<Recipes> to_return = library_.FilterDifficulty("easy");
     return to_return;
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
 }
