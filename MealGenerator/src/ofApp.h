@@ -30,18 +30,29 @@ private:
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
     
-    void onButtonEvent(ofxDatGuiButtonEvent e);
-    
-    void PressedMain();
-    void PressedBreakfast();
-    void PressedHard();
-    void PressedEasy();
-    
+    // Functions/Variables For Project
     ofxDatGui* gui;
+    ofxDatGuiTheme* theme_; 
+    
+    // Buttons for Main Dropdown
     ofxDatGuiButton* main_b_;
     ofxDatGuiButton* break_b_;
     ofxDatGuiButton* easy_b_;
     ofxDatGuiButton* hard_b_;
     ofxDatGuiDropdown* dropdown;
-		
+    
+    // Functions For Buttons on Dropdown
+    void onButtonEvent(ofxDatGuiButtonEvent e);
+    std::vector<Recipes> PressedMain();
+    std::vector<Recipes> PressedBreakfast();
+    std::vector<Recipes> PressedHard();
+    std::vector<Recipes> PressedEasy();
+    
+    // Scroll
+    ofxDatGuiScrollView* scroll;
+    void onScrollViewEvent(ofxDatGuiScrollViewEvent e);
+    ofxDatGuiButton* addItem;
+    void onAddNewItemButtonClick(ofxDatGuiButtonEvent e);
+    void ShowRecipes(std::vector<Recipes> r);
+
 };

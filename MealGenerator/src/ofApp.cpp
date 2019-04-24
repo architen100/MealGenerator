@@ -72,6 +72,8 @@ void ofApp::setup(){
     
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
     
+    gui -> setTheme(new ofxDatGuiThemeAutumn);
+    
     
     // Adding Buttons to gui
     main_b_ = gui -> addButton("main");
@@ -85,67 +87,104 @@ void ofApp::setup(){
     break_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    
+    // Creating my ScrollMenu to hold my recipes
+    scroll = new ofxDatGuiScrollView("Recipes", 8);
+    scroll -> onScrollViewEvent(this, &ofApp::onScrollViewEvent);
+    
+    //Create a button add items
+    addItem = new ofxDatGuiButton("click to add item");
+    addItem->onButtonEvent(this, &ofApp::onAddNewItemButtonClick);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    addItem -> update();
+    scroll -> update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
+    addItem -> draw();
+    scroll -> draw(); 
+}
+
+//--------------------------------------------------------------
+void ofApp::onAddNewItemButtonClick(ofxDatGuiButtonEvent e)
+{
+    scroll-> add("item " + ofToString(scroll -> getNumItems() + 1));
+    addItem->setLabel("click to add item - " + ofToString(scroll->getNumItems()) + " items");
+}
+
+//--------------------------------------------------------------
+void ofApp::ShowRecipes(std::vector<Recipes> r) {
+    for (int i = 0; i < r.size(); i++) {
+        scroll -> add(r[i].GetName());
+    }
+}
+
+//--------------------------------------------------------------
+void ofApp::onScrollViewEvent(ofxDatGuiScrollViewEvent e){
+    cout << e.target->getLabel() << " [index " << e.target->getIndex() << "] selected in [" << e.parent->getName() << "]" << endl;
 }
 
 //---------------------------------------------------------------
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     if (e.target->getLabel() == "main") {
-        PressedMain();
+        std::vector<Recipes> r = PressedMain();
+        ShowRecipes(r);
     }
     if (e.target -> getLabel() == "breakfast") {
-        PressedBreakfast();
+        std::vector<Recipes> r = PressedBreakfast();
+        ShowRecipes(r);
     }
     if (e.target -> getLabel() == "easy") {
-        PressedEasy();
+        std::vector<Recipes> r = PressedEasy();
+        ShowRecipes(r);
     }
     if (e.target -> getLabel() == "hard") {
-        PressedHard();
+        std::vector<Recipes> r = PressedHard();
+        ShowRecipes(r);
     }
 }
 
 //---------------------------------------------------------------
-void ofApp::PressedBreakfast() {
+std::vector<Recipes> ofApp::PressedBreakfast() {
     std::vector<Recipes> to_return = library_.FilterType("breakfast");
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
     }
+    return to_return;
 }
 
 //----------------------------------------------------------------
-void ofApp::PressedMain() {
+std::vector<Recipes> ofApp::PressedMain() {
     std::vector<Recipes> to_return = library_.FilterType("main");
     
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
     }
+    return to_return;
 }
 
 // ---------------------------------------------------------------
-void ofApp::PressedHard() {
+std::vector<Recipes> ofApp::PressedHard() {
     std::vector<Recipes> to_return = library_.FilterDifficulty("hard");
     
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
     }
+    return to_return;
 }
 
 // ---------------------------------------------------------------
-void ofApp::PressedEasy() {
+std::vector<Recipes> ofApp::PressedEasy() {
     std::vector<Recipes> to_return = library_.FilterDifficulty("easy");
     
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
     }
+    return to_return;
 }
 
 //--------------------------------------------------------------
