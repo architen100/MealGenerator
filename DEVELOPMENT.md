@@ -37,3 +37,5 @@ Layout Overview :
     - Used a new GUI called ofxDatGui 
         - Played around with the dropdown menu to see if gui worked 
         - Had to rename the ofDatGui files so it matched the project path
+    - Couldn't fit all the recipe names in a dropdown menu so opted to use a scrollview instead 
+        - Was able to code so that I could add the recipe names to the scrollview 
