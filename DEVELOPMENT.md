@@ -26,6 +26,7 @@ Layout Overview :
         - Displays the recipes for each day 
     - Week 
         - A grocery list of all the ingredients 
+        
 
 ## Week 3: 
     - Changed my JSON structure so that type is a string instead of an array
@@ -41,3 +42,5 @@ Layout Overview :
         - Was able to code so that I could add the recipe names to the scrollview 
     - Can't use scroll menu to show recipe for each day because it won't disappear after a click to another button 
         - Decided to use a dropdown menu instead 
+    - Had trouble with my new dropdown menu for each day because I wrote my SetVisibility conditions wrong 
+        - Fixed by changing the conditions in my if statements 
