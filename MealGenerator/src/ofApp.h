@@ -29,10 +29,21 @@ private:
 		void gotMessage(ofMessage msg);
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
+        std::vector<string> to_add;
     
     // Functions/Variables For Project
     ofxDatGui* gui;
-    ofxDatGuiTheme* theme_; 
+    ofxDatGuiTheme* theme_;
+    
+    //GUI for each day
+    ofxDatGui* m_g;
+    ofxDatGui* t_g;
+    ofxDatGui* w_g;
+    ofxDatGui* r_g;
+    ofxDatGui* f_g;
+    ofxDatGui* s_g;
+    ofxDatGui* ss_g;
+    ofxDatGui* g_g;
     
     // Buttons for Main Dropdown
     ofxDatGuiButton* main_b_;
@@ -48,11 +59,29 @@ private:
     std::vector<Recipes> PressedHard();
     std::vector<Recipes> PressedEasy();
     
-    // Scroll
+    // Function for dropdown
+    void onDropdownEvent(ofxDatGuiDropdownEvent e);
+    void SetVisibility(int num);
+    
+    // Main Recipe Scroll
     ofxDatGuiScrollView* scroll;
     void onScrollViewEvent(ofxDatGuiScrollViewEvent e);
     ofxDatGuiButton* addItem;
     void onAddNewItemButtonClick(ofxDatGuiButtonEvent e);
     void ShowRecipes(std::vector<Recipes> r);
+    
+    // Dropdown for Each Day
+    ofxDatGuiDropdown* m_drop;
+    ofxDatGuiDropdown* t_drop;
+    ofxDatGuiDropdown* w_drop;
+    ofxDatGuiDropdown* r_drop;
+    ofxDatGuiDropdown* f_drop;
+    ofxDatGuiDropdown* s_drop;
+    ofxDatGuiDropdown* ss_drop;
+    ofxDatGuiDropdown* g_drop;
+
+    
+    // Function to add Recipe to scroll day
+    void AddRecipe(); 
 
 };
