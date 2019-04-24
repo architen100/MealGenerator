@@ -34,10 +34,14 @@ private:
     
     void PressedMain();
     void PressedBreakfast();
+    void PressedHard();
+    void PressedEasy();
     
     ofxDatGui* gui;
-    ofxDatGuiButton* main_;
-    ofxDatGuiButton* breakfast_;
-    ofxDatGuiDropdown* dropdown; 
+    ofxDatGuiButton* main_b_;
+    ofxDatGuiButton* break_b_;
+    ofxDatGuiButton* easy_b_;
+    ofxDatGuiButton* hard_b_;
+    ofxDatGuiDropdown* dropdown;
 		
 };

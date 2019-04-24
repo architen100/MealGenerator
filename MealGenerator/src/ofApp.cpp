@@ -61,23 +61,30 @@ std::vector<Recipes> ofApp::Parser() {
 }
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    // Parsing the json
     std::vector<Recipes> recipes = ofApp::Parser();
     Library library = Library(recipes);
     library_ = library;
-    vector<string> options = {"one", "two", "three", "four"};
+    
+    
+    vector<string> options = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
     
     
-    main_ = gui -> addButton("main");
-    breakfast_ = gui -> addButton("breakfast");
+    // Adding Buttons to gui
+    main_b_ = gui -> addButton("main");
+    break_b_ = gui -> addButton("breakfast");
+    easy_b_ = gui -> addButton("easy");
+    hard_b_ = gui -> addButton("hard");
     dropdown = gui -> addDropdown("Days", options);
 
-    
-    main_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    breakfast_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    
-    dropdown -> expand();
+    // Function when button is clicked
+    main_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    break_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
+    easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
 }
 
 //--------------------------------------------------------------
@@ -98,6 +105,12 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     if (e.target -> getLabel() == "breakfast") {
         PressedBreakfast();
     }
+    if (e.target -> getLabel() == "easy") {
+        PressedEasy();
+    }
+    if (e.target -> getLabel() == "hard") {
+        PressedHard();
+    }
 }
 
 //---------------------------------------------------------------
@@ -111,6 +124,24 @@ void ofApp::PressedBreakfast() {
 //----------------------------------------------------------------
 void ofApp::PressedMain() {
     std::vector<Recipes> to_return = library_.FilterType("main");
+    
+    for (int i = 0; i < to_return.size(); i++) {
+        std::cout << to_return[i].GetName() << std::endl;
+    }
+}
+
+// ---------------------------------------------------------------
+void ofApp::PressedHard() {
+    std::vector<Recipes> to_return = library_.FilterDifficulty("hard");
+    
+    for (int i = 0; i < to_return.size(); i++) {
+        std::cout << to_return[i].GetName() << std::endl;
+    }
+}
+
+// ---------------------------------------------------------------
+void ofApp::PressedEasy() {
+    std::vector<Recipes> to_return = library_.FilterDifficulty("easy");
     
     for (int i = 0; i < to_return.size(); i++) {
         std::cout << to_return[i].GetName() << std::endl;
