@@ -100,7 +100,7 @@ void ofApp::setup(){
     hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     done_btn -> onButtonEvent(this, &ofApp::onButtonEvent);
-    input -> onTextInputEvent(this, &ofApp::onButtonEvent); 
+    input -> onTextInputEvent(this, &ofApp::onTextInputEvent); 
     
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
@@ -158,21 +158,21 @@ void ofApp::draw(){
 
 //-------------------------------------------------------------
 void ofApp::SetPositionOfDrop() {
-    m_drop -> setPosition(ofGetScreenWidth()/2 - m_drop->getWidth()/2, ofGetScreenHeight()/2 - m_drop->getHeight()/2 - 100);
+    m_drop -> setPosition(ofGetScreenWidth()/2 - m_drop->getWidth() - 50, ofGetScreenHeight()/2 - m_drop->getHeight()/2);
 
-    t_drop -> setPosition(ofGetScreenWidth()/2 - t_drop->getWidth()/2, ofGetScreenHeight()/2 - t_drop->getHeight()/2 - 100);
+    t_drop -> setPosition(ofGetScreenWidth()/2 - t_drop -> getWidth() - 50, ofGetScreenHeight()/2 - t_drop->getHeight()/2);
 
-    w_drop -> setPosition(ofGetScreenWidth()/2 - w_drop->getWidth()/2, ofGetScreenHeight()/2 - w_drop->getHeight()/2 - 100);
+    w_drop -> setPosition(ofGetScreenWidth()/2 - w_drop -> getWidth() - 50, ofGetScreenHeight()/2 - w_drop->getHeight()/2);
 
-    r_drop -> setPosition(ofGetScreenWidth()/2 - r_drop->getWidth()/2, ofGetScreenHeight()/2 - r_drop->getHeight()/2 - 100);
+    r_drop -> setPosition(ofGetScreenWidth()/2 - r_drop->getWidth() - 50, ofGetScreenHeight()/2 - r_drop->getHeight()/2);
 
-    f_drop -> setPosition(ofGetScreenWidth()/2 - f_drop->getWidth()/2, ofGetScreenHeight()/2 - f_drop->getHeight()/2 - 100);
+    f_drop -> setPosition(ofGetScreenWidth()/2 - f_drop->getWidth() - 50, ofGetScreenHeight()/2 - f_drop->getHeight()/2);
 
-    s_drop -> setPosition(ofGetScreenWidth()/2 - s_drop->getWidth()/2, ofGetScreenHeight()/2 - s_drop->getHeight()/2 - 100);
+    s_drop -> setPosition(ofGetScreenWidth()/2 - s_drop->getWidth() - 50, ofGetScreenHeight()/2 - s_drop->getHeight()/2);
 
-    ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth()/2, ofGetScreenHeight()/2 - ss_drop->getHeight()/2 - 100);
+    ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth() - 50, ofGetScreenHeight()/2 - ss_drop->getHeight()/2);
 
-    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth()/2, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 100);
+    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth() - 60, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 150);
 }
 //-------------------------------------------------------------
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
@@ -386,13 +386,9 @@ std::vector<Recipes> ofApp::PressedEasy() {
 
 // ----------------------------------------------------------------
 void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
-    string input = e.text;
-    
-    for (int i = 0 ; i < library_.GetRecipes().size(); i++) {
-        if (input == library_.GetRecipes()[i].GetName()) {
-            
-        }
-    }
+    std::vector<Recipes> recipes = library_.FilterIngredients(e.text);
+    scroll -> clear();
+    ShowRecipes(recipes);
 }
 
 // ----------------------------------------------------------------
