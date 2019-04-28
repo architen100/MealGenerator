@@ -72,6 +72,16 @@ void ofApp::setup(){
     
     gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT );
     
+//    m_gui = new ofxDatGui();
+//    t_gui = new ofxDatGui();
+//    w_gui = new ofxDatGui();
+//    r_gui = new ofxDatGui();
+//    f_gui = new ofxDatGui();
+//    s_gui = new ofxDatGui();
+//    ss_gui = new ofxDatGui();
+//    g_gui = new ofxDatGui();
+    
+    
     gui -> setTheme(new ofxDatGuiThemeAutumn);
     
     
@@ -147,19 +157,19 @@ void ofApp::draw(){
 //-------------------------------------------------------------
 void ofApp::SetPositionOfDrop() {
     m_drop -> setPosition(ofGetScreenWidth()/2 - m_drop->getWidth()/2, ofGetScreenHeight()/2 - m_drop->getHeight()/2 - 100);
-    
+
     t_drop -> setPosition(ofGetScreenWidth()/2 - t_drop->getWidth()/2, ofGetScreenHeight()/2 - t_drop->getHeight()/2 - 100);
-    
+
     w_drop -> setPosition(ofGetScreenWidth()/2 - w_drop->getWidth()/2, ofGetScreenHeight()/2 - w_drop->getHeight()/2 - 100);
-    
+
     r_drop -> setPosition(ofGetScreenWidth()/2 - r_drop->getWidth()/2, ofGetScreenHeight()/2 - r_drop->getHeight()/2 - 100);
-    
+
     f_drop -> setPosition(ofGetScreenWidth()/2 - f_drop->getWidth()/2, ofGetScreenHeight()/2 - f_drop->getHeight()/2 - 100);
-    
+
     s_drop -> setPosition(ofGetScreenWidth()/2 - s_drop->getWidth()/2, ofGetScreenHeight()/2 - s_drop->getHeight()/2 - 100);
-    
+
     ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth()/2, ofGetScreenHeight()/2 - ss_drop->getHeight()/2 - 100);
-    
+
     g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth()/2, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 100);
 }
 //-------------------------------------------------------------
@@ -253,49 +263,65 @@ void ofApp::onScrollViewEvent(ofxDatGuiScrollViewEvent e){
 
 //---------------------------------------------------------------
 void ofApp::AddRecipe(int num) {
+    
+    std::cout << "in the beginning" << recipe_add.size() << std::endl;
+    
     if (num == 0) {
         m_drop = new ofxDatGuiDropdown("Monday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 1) {
         t_drop = new ofxDatGuiDropdown("Tuesday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 2) {
         w_drop = new ofxDatGuiDropdown("Wednesday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 3) {
         r_drop = new ofxDatGuiDropdown("Thursday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 4) {
         f_drop = new ofxDatGuiDropdown("Friday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 5) {
         s_drop = new ofxDatGuiDropdown("Saturday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 6) {
         ss_drop = new ofxDatGuiDropdown("Sunday", recipe_add);
+        SetPositionOfDrop();
         AddIngredients(recipe_add);
     }
     if (num == 7) {
         g_drop = new ofxDatGuiDropdown("Grocery", grocery_list);
+        SetPositionOfDrop();
     }
+    std::cout << "Before clearing" << recipe_add.size() << std::endl;
     recipe_add.clear();
+    std::cout << "after clearing" << recipe_add.size() << std::endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::AddIngredients(std::vector<string> s) {
     for (int i = 0; i < s.size(); i++) {
         
+        int amount = 0;
+        
         for (int j = 0; j < library_.GetRecipes().size(); j++) {
             
             if (s[i] == library_.GetRecipes()[j].GetName()) {
                 
                 for (int k = 0; k < library_.GetRecipes()[j].GetIngredients().size(); k++) {
+                    
                     string add = library_.GetRecipes()[j].GetIngredients()[k].GetName() + ": " + std::to_string(library_.GetRecipes()[j].GetIngredients()[k].GetAmount()) + library_.GetRecipes()[j].GetIngredients()[k].GetUnit();
                     
                     grocery_list.push_back(add);

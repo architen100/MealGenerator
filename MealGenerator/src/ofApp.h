@@ -18,7 +18,7 @@ private:
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
         std::vector<string> recipe_add;
-    std::vector<string> grocery_list;
+        std::vector<string> grocery_list;
     
     // Functions/Variables For Project
         ofxDatGui* gui;
@@ -61,12 +61,13 @@ private:
         ofxDatGuiDropdown* s_drop;
         ofxDatGuiDropdown* ss_drop;
         ofxDatGuiDropdown* g_drop;
-
+    
+        ofxDatGuiScrollView g_scroll; 
     
     // Function to add Recipe to scroll day
         void AddRecipe(int num);
         ofxDatGuiButton* done_btn;
     void AddIngredients(std::vector<string> s); 
     
-        int day;
+    int day;
 };
