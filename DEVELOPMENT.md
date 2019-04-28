@@ -48,5 +48,5 @@ Changed my JSON structure so that type is a string instead of an array
 ## Week 4: 
 - Had trouble set my position for my drop down menus because it keeps moving 
     - Fixed problem by set position of the drop down menus again when I create a new object of it
-    
+- Going to create another filtering method so user can find recipe by certain ingredients 
 
