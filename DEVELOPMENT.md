@@ -29,7 +29,7 @@ Layout Overview :
         
 
 ## Week 3: 
-    - Changed my JSON structure so that type is a string instead of an array
+Changed my JSON structure so that type is a string instead of an array
     - Ran into a problem with parsing because my ingredients is another array 
     - Found a way to parse a nested array by creating another Json::Value object which take the root ingredients at entries[ i ]
     - Had problems running my catch because main wasn't working 
@@ -44,3 +44,9 @@ Layout Overview :
         - Decided to use a dropdown menu instead 
     - Had trouble with my new dropdown menu for each day because I wrote my SetVisibility conditions wrong 
         - Fixed by changing the conditions in my if statements 
+
+## Week 4: 
+- Had trouble set my position for my drop down menus because it keeps moving 
+    - Fixed problem by set position of the drop down menus again when I create a new object of it
+    
+
