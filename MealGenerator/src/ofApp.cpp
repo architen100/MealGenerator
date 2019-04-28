@@ -92,6 +92,7 @@ void ofApp::setup(){
     hard_b_ = gui -> addButton("hard");
     dropdown = gui -> addDropdown("Days", options);
     done_btn = gui -> addButton("Finish Adding");
+    input = gui -> addTextInput("ingredient", "");
 
     // Function when button is clicked
     main_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
@@ -99,6 +100,7 @@ void ofApp::setup(){
     hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
     done_btn -> onButtonEvent(this, &ofApp::onButtonEvent);
+    input -> onTextInputEvent(this, &ofApp::onButtonEvent); 
     
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
@@ -381,3 +383,16 @@ std::vector<Recipes> ofApp::PressedEasy() {
     std::vector<Recipes> to_return = library_.FilterDifficulty("easy");
     return to_return;
 }
+
+// ----------------------------------------------------------------
+void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
+    string input = e.text;
+    
+    for (int i = 0 ; i < library_.GetRecipes().size(); i++) {
+        if (input == library_.GetRecipes()[i].GetName()) {
+            
+        }
+    }
+}
+
+// ----------------------------------------------------------------

@@ -33,4 +33,5 @@ private:
     // Filtering methods
     std::vector<Recipes> FilterType(std::string type);
     std::vector<Recipes> FilterDifficulty(std::string diff);
+    std::vector<Recipes> FilterIngredients(std::string i); 
 };

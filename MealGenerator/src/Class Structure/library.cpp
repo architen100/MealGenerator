@@ -28,23 +28,37 @@ std::vector<Recipes> Library::GetRecipes() {
 
 // Filtering Methods
 std::vector<Recipes> Library::FilterType(std::string type) {
-    std::vector<Recipes> toReturn;
+    std::vector<Recipes> to_return;
     for (int i = 0; i < recipes_.size(); i++) {
         if (type == recipes_.at(i).GetType()) {
-            toReturn.push_back(recipes_.at(i));
+            to_return.push_back(recipes_.at(i));
         }
     }
-    return toReturn;
+    return to_return;
 }
 
 std::vector<Recipes> Library::FilterDifficulty(std::string diff) {
-    std::vector<Recipes> toReturn;
+    std::vector<Recipes> to_return;
     for (int i = 0; i < recipes_.size(); i++) {
         if (diff == recipes_.at(i).GetDifficulty()) {
-            toReturn.push_back(recipes_.at(i));
+            to_return.push_back(recipes_.at(i));
         }
     }
-    return toReturn;
+    return to_return;
+}
+
+std::vector<Recipes> Library::FilterIngredients(std::string ingre) {
+    std::vector<Recipes> to_return;
+    for (int i = 0; i < recipes_.size(); i++) {
+        
+        for (int ii = 0; ii < recipes_[i].GetIngredients().size(); ii++) {
+            
+            if (ingre == recipes_[i].GetIngredients()[ii].GetName()) {
+                to_return.push_back(recipes_.at(i));
+            }
+        }
+    }
+    return to_return;
 }
 
 

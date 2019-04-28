@@ -30,6 +30,7 @@ private:
         ofxDatGuiButton* easy_b_;
         ofxDatGuiButton* hard_b_;
         ofxDatGuiDropdown* dropdown;
+        ofxDatGuiTextInput* input;
     
     // Functions to set position of drop down menus
         void SetPositionOfDrop(); 
@@ -44,6 +45,9 @@ private:
     // Function for dropdown
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
         void SetVisibility(int num);
+    
+    // Function for text input
+    void onTextInputEvent(ofxDatGuiTextInputEvent e);
     
     // Main Recipe Scroll
         ofxDatGuiScrollView* scroll;
@@ -62,7 +66,7 @@ private:
         ofxDatGuiDropdown* ss_drop;
         ofxDatGuiDropdown* g_drop;
     
-        ofxDatGuiScrollView g_scroll; 
+        //ofxDatGuiScrollView g_scroll; 
     
     // Function to add Recipe to scroll day
         void AddRecipe(int num);
