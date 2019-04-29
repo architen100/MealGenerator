@@ -99,6 +99,9 @@ void ofApp::setup(){
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
     g_scroll = new ofxDatGuiScrollView("Grocery", 8);
+    
+    g_scroll -> setBackgroundColor(ofColor(0x7d7066));
+    
     scroll -> onScrollViewEvent(this, &ofApp::onScrollViewEvent);
     
     m_drop = new ofxDatGuiDropdown("Monday", {});
@@ -108,7 +111,6 @@ void ofApp::setup(){
     f_drop = new ofxDatGuiDropdown("Friday", {});
     s_drop = new ofxDatGuiDropdown("Saturday", {});
     ss_drop = new ofxDatGuiDropdown("Sunday", {});
-    //g_drop = new ofxDatGuiDropdown("Grocery", {});
     
     
     //Set Visibility to False
@@ -139,6 +141,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    ofBackground(ofColor(0x7d7066));
     //addItem -> draw();
     scroll -> draw();
     g_scroll -> draw();
@@ -168,8 +172,6 @@ void ofApp::SetPositionOfDrop() {
     s_drop -> setPosition(ofGetScreenWidth()/2 - s_drop->getWidth() - 50, ofGetScreenHeight()/2 - s_drop->getHeight()/2);
 
     ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth() - 50, ofGetScreenHeight()/2 - ss_drop->getHeight()/2);
-
-//    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth() - 60, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 150);
     
     g_scroll -> setPosition(ofGetScreenWidth()/2 - g_scroll->getWidth() - 60,
                             ofGetScreenHeight()/2 - g_scroll ->getHeight()/2 - 150);
@@ -179,10 +181,6 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     int num = e.child;
     
     day = num;
-    
-//    for (int i = 0; i < recipe_add.size(); i++) {
-//        std::cout << recipe_add[i] << std::endl;
-//    }
     
     if (num == 0) {
         m_drop -> setVisible(true);
@@ -348,7 +346,9 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
         AddRecipe(day);
     }
     if (e.target -> getLabel() == "Grocery") {
+        SetVisibility(10);
         AddIngredients();
+        g_scroll -> setTheme(new ofxDatGuiThemeAutumn);
         for (int i = 0; i < grocery_list.size(); i++) {
             g_scroll -> add(grocery_list[i]);
         }
