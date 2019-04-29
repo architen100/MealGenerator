@@ -49,4 +49,9 @@ Changed my JSON structure so that type is a string instead of an array
 - Had trouble set my position for my drop down menus because it keeps moving 
     - Fixed problem by set position of the drop down menus again when I create a new object of it
 - Going to create another filtering method so user can find recipe by certain ingredients 
+- Changed logic in my code so that user can add additional recipes to certain days 
+    - Had to create a 2d vector to keep track of my exisiting recipes for each day 
+- Created a scroll view menu to keep track of the grocery list instead of a drop down menu 
+    - Having trouble making the scroll view menu appear and disappear 
+    
 
