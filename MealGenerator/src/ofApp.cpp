@@ -67,43 +67,38 @@ void ofApp::setup(){
     Library library = Library(recipes);
     library_ = library;
     
+    for (int p = 0; p < 7; p++) {
+        recipe_add.push_back(std::vector<string> {});
+    }
     
     vector<string> options = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Grocery List"};
     
     gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT );
-    
-//    m_gui = new ofxDatGui();
-//    t_gui = new ofxDatGui();
-//    w_gui = new ofxDatGui();
-//    r_gui = new ofxDatGui();
-//    f_gui = new ofxDatGui();
-//    s_gui = new ofxDatGui();
-//    ss_gui = new ofxDatGui();
-//    g_gui = new ofxDatGui();
+
     
     
     gui -> setTheme(new ofxDatGuiThemeAutumn);
     
     
     // Adding Buttons to gui
+    main_label = gui -> addLabel("Click Option");
     main_b_ = gui -> addButton("main");
     break_b_ = gui -> addButton("breakfast");
     easy_b_ = gui -> addButton("easy");
     hard_b_ = gui -> addButton("hard");
+    input = gui -> addTextInput("ingredient", "");
+    day_label = gui -> addLabel("Choose Day");
     dropdown = gui -> addDropdown("Days", options);
     done_btn = gui -> addButton("Finish Adding");
-    input = gui -> addTextInput("ingredient", "");
+    grocery_b = gui -> addButton("Grocery");
 
     // Function when button is clicked
-    main_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    break_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    hard_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    easy_b_ -> onButtonEvent(this, &ofApp::onButtonEvent);
-    done_btn -> onButtonEvent(this, &ofApp::onButtonEvent);
-    input -> onTextInputEvent(this, &ofApp::onTextInputEvent); 
+    gui -> onButtonEvent(this, &ofApp::onButtonEvent);
+    gui -> onTextInputEvent(this, &ofApp::onTextInputEvent);
     
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
+    g_scroll = new ofxDatGuiScrollView("Grocery", 8);
     scroll -> onScrollViewEvent(this, &ofApp::onScrollViewEvent);
     
     m_drop = new ofxDatGuiDropdown("Monday", {});
@@ -113,7 +108,7 @@ void ofApp::setup(){
     f_drop = new ofxDatGuiDropdown("Friday", {});
     s_drop = new ofxDatGuiDropdown("Saturday", {});
     ss_drop = new ofxDatGuiDropdown("Sunday", {});
-    g_drop = new ofxDatGuiDropdown("Grocery", {});
+    //g_drop = new ofxDatGuiDropdown("Grocery", {});
     
     
     //Set Visibility to False
@@ -131,6 +126,7 @@ void ofApp::setup(){
 void ofApp::update(){
     //addItem -> update();
     scroll -> update();
+    g_scroll -> update();
     m_drop -> update();
     t_drop -> update();
     w_drop -> update();
@@ -138,13 +134,14 @@ void ofApp::update(){
     f_drop -> update();
     s_drop -> update();
     ss_drop -> update();
-    g_drop -> update();
+    //g_drop -> update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     //addItem -> draw();
     scroll -> draw();
+    g_scroll -> draw();
     m_drop -> draw();
     t_drop -> draw();
     w_drop -> draw();
@@ -152,7 +149,7 @@ void ofApp::draw(){
     f_drop -> draw();
     s_drop -> draw();
     ss_drop -> draw();
-    g_drop -> draw();
+    //g_drop -> draw();
     
 }
 
@@ -172,7 +169,10 @@ void ofApp::SetPositionOfDrop() {
 
     ss_drop -> setPosition(ofGetScreenWidth()/2 - ss_drop->getWidth() - 50, ofGetScreenHeight()/2 - ss_drop->getHeight()/2);
 
-    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth() - 60, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 150);
+//    g_drop -> setPosition(ofGetScreenWidth()/2 - g_drop->getWidth() - 60, ofGetScreenHeight()/2 - g_drop->getHeight()/2 - 150);
+    
+    g_scroll -> setPosition(ofGetScreenWidth()/2 - g_scroll->getWidth() - 60,
+                            ofGetScreenHeight()/2 - g_scroll ->getHeight()/2 - 150);
 }
 //-------------------------------------------------------------
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
@@ -180,9 +180,9 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     
     day = num;
     
-    for (int i = 0; i < recipe_add.size(); i++) {
-        std::cout << recipe_add[i] << std::endl;
-    }
+//    for (int i = 0; i < recipe_add.size(); i++) {
+//        std::cout << recipe_add[i] << std::endl;
+//    }
     
     if (num == 0) {
         m_drop -> setVisible(true);
@@ -218,7 +218,7 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
 
     }
     if (num == 7) {
-        g_drop -> setVisible(true);
+        g_scroll -> setVisible(true);
         SetVisibility(num);
     }
 }
@@ -247,7 +247,7 @@ void ofApp::SetVisibility(int num) {
         ss_drop -> setVisible(false);
     }
     if (num != 7) {
-        g_drop -> setVisible(false);
+        g_scroll -> setVisible(false);
     }
 
 }
@@ -260,7 +260,7 @@ void ofApp::ShowRecipes(std::vector<Recipes> r) {
 
 //--------------------------------------------------------------
 void ofApp::onScrollViewEvent(ofxDatGuiScrollViewEvent e){
-    recipe_add.push_back(e.target -> getLabel());
+    recipe_add[day].push_back(e.target -> getLabel());
 }
 
 //---------------------------------------------------------------
@@ -269,64 +269,53 @@ void ofApp::AddRecipe(int num) {
     std::cout << "in the beginning" << recipe_add.size() << std::endl;
     
     if (num == 0) {
-        m_drop = new ofxDatGuiDropdown("Monday", recipe_add);
+        m_drop = new ofxDatGuiDropdown("Monday", recipe_add[0]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 1) {
-        t_drop = new ofxDatGuiDropdown("Tuesday", recipe_add);
+        t_drop = new ofxDatGuiDropdown("Tuesday", recipe_add[1]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 2) {
-        w_drop = new ofxDatGuiDropdown("Wednesday", recipe_add);
+        w_drop = new ofxDatGuiDropdown("Wednesday", recipe_add[2]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 3) {
-        r_drop = new ofxDatGuiDropdown("Thursday", recipe_add);
+        r_drop = new ofxDatGuiDropdown("Thursday", recipe_add[3]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 4) {
-        f_drop = new ofxDatGuiDropdown("Friday", recipe_add);
+        f_drop = new ofxDatGuiDropdown("Friday", recipe_add[4]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 5) {
-        s_drop = new ofxDatGuiDropdown("Saturday", recipe_add);
+        s_drop = new ofxDatGuiDropdown("Saturday", recipe_add[5]);
         SetPositionOfDrop();
-        AddIngredients(recipe_add);
     }
     if (num == 6) {
-        ss_drop = new ofxDatGuiDropdown("Sunday", recipe_add);
-        SetPositionOfDrop();
-        AddIngredients(recipe_add);
-    }
-    if (num == 7) {
-        g_drop = new ofxDatGuiDropdown("Grocery", grocery_list);
+        ss_drop = new ofxDatGuiDropdown("Sunday", recipe_add[6]);
         SetPositionOfDrop();
     }
-    std::cout << "Before clearing" << recipe_add.size() << std::endl;
-    recipe_add.clear();
-    std::cout << "after clearing" << recipe_add.size() << std::endl;
 }
 
 //--------------------------------------------------------------
-void ofApp::AddIngredients(std::vector<string> s) {
-    for (int i = 0; i < s.size(); i++) {
+void ofApp::AddIngredients() {
+    
+    for (int i = 0; i < recipe_add.size(); i++) {
         
-        int amount = 0;
-        
-        for (int j = 0; j < library_.GetRecipes().size(); j++) {
+        for (int ii = 0; ii < recipe_add[i].size(); ii++) {
             
-            if (s[i] == library_.GetRecipes()[j].GetName()) {
+            for (int j = 0; j < library_.GetRecipes().size(); j++) {
                 
-                for (int k = 0; k < library_.GetRecipes()[j].GetIngredients().size(); k++) {
+                if (recipe_add[i][ii] == library_.GetRecipes()[j].GetName()) {
                     
-                    string add = library_.GetRecipes()[j].GetIngredients()[k].GetName() + ": " + std::to_string(library_.GetRecipes()[j].GetIngredients()[k].GetAmount()) + library_.GetRecipes()[j].GetIngredients()[k].GetUnit();
-                    
-                    grocery_list.push_back(add);
+                    for (int k = 0; k < library_.GetRecipes()[j].GetIngredients().size(); k++) {
+                        
+                        string add = library_.GetRecipes()[j].GetIngredients()[k].GetName() + ": " + std::to_string(library_.GetRecipes()[j].GetIngredients()[k].GetAmount())
+                        + " " + library_.GetRecipes()[j].GetIngredients()[k].GetUnit();
+                        
+                        grocery_list.push_back(add);
+                    }
                 }
             }
         }
@@ -357,6 +346,12 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     }
     if (e.target -> getLabel() == "Finish Adding") {
         AddRecipe(day);
+    }
+    if (e.target -> getLabel() == "Grocery") {
+        AddIngredients();
+        for (int i = 0; i < grocery_list.size(); i++) {
+            g_scroll -> add(grocery_list[i]);
+        }
     }
 }
 

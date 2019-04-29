@@ -17,11 +17,13 @@ private:
 		void draw();
         std::vector<Recipes> Parser();
         std::vector<Recipes> to_return_;
-        std::vector<string> recipe_add;
+    std::vector<std::vector<string>> recipe_add;
         std::vector<string> grocery_list;
     
     // Functions/Variables For Project
         ofxDatGui* gui;
+    ofxDatGuiLabel* main_label;
+    ofxDatGuiLabel* day_label; 
         ofxDatGuiTheme* theme_;
     
     // Buttons for Main Dropdown
@@ -29,6 +31,7 @@ private:
         ofxDatGuiButton* break_b_;
         ofxDatGuiButton* easy_b_;
         ofxDatGuiButton* hard_b_;
+    ofxDatGuiButton* grocery_b; 
         ofxDatGuiDropdown* dropdown;
         ofxDatGuiTextInput* input;
     
@@ -64,14 +67,14 @@ private:
         ofxDatGuiDropdown* f_drop;
         ofxDatGuiDropdown* s_drop;
         ofxDatGuiDropdown* ss_drop;
-        ofxDatGuiDropdown* g_drop;
+        //ofxDatGuiDropdown* g_drop;
     
-        //ofxDatGuiScrollView g_scroll; 
+        ofxDatGuiScrollView* g_scroll; 
     
     // Function to add Recipe to scroll day
         void AddRecipe(int num);
         ofxDatGuiButton* done_btn;
-    void AddIngredients(std::vector<string> s); 
+    void AddIngredients();
     
     int day;
 };
