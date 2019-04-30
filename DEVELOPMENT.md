@@ -58,3 +58,8 @@ Layout Overview :
     - Moved my parser function to another class 
     - Moved all my non-gui functions to my library class 
 
+## In the future : 
+- I would like to use an actual API rather than my own JSON file so I can have a library of more recipes 
+- Would want to update my meal list immediately after user clicks on the recipe they want 
+- Have a folder that gives the user the instructions for each recipe
+
