@@ -7,6 +7,7 @@
 
 #include "library.hpp"
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 Library::Library(std::vector<Recipes> r) {
@@ -61,6 +62,27 @@ std::vector<Recipes> Library::FilterIngredients(std::string ingre) {
     return to_return;
 }
 
-
-
-
+std::vector<std::string> Library::GetGroceryList(std::vector<std::vector<std::string>> recipe_add, Library library_) {
+    
+    std::vector<std::string> grocery_list;
+    for (int i = 0; i < recipe_add.size(); i++) {
+        
+        for (int ii = 0; ii < recipe_add[i].size(); ii++) {
+            
+            for (int j = 0; j < library_.GetRecipes().size(); j++) {
+                
+                if (recipe_add[i][ii] == library_.GetRecipes()[j].GetName()) {
+                    
+                    for (int k = 0; k < library_.GetRecipes()[j].GetIngredients().size(); k++) {
+                        
+                        std::string add = library_.GetRecipes()[j].GetIngredients()[k].GetName() + ": " + std::to_string(library_.GetRecipes()[j].GetIngredients()[k].GetAmount())
+                        + " " + library_.GetRecipes()[j].GetIngredients()[k].GetUnit();
+                        
+                        grocery_list.push_back(add);
+                    }
+                }
+            }
+        }
+    }
+    return grocery_list;
+}

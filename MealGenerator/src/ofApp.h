@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "library.hpp"
+#include "Parser.hpp"
 #include <vector>
 #include "ofxGui.h"
 #include "ofxDatGui.h"
@@ -10,35 +10,42 @@ class ofApp : public ofBaseApp{
     
 private:
     Library library_;
+    int day_;
 
 	public:
-		void setup();
+        void setup();
 		void update();
 		void draw();
-        std::vector<Recipes> Parser();
+    
+        // Global Variables
+        std::vector<std::vector<string>> recipe_add;
         std::vector<Recipes> to_return_;
-    std::vector<std::vector<string>> recipe_add;
         std::vector<string> grocery_list;
+        vector<string> options = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Grocery List"};
+    
+        ofxDatGuiScrollView* day_scroll_;
     
     // Functions/Variables For Project
         ofxDatGui* gui;
-    ofxDatGuiLabel* main_label;
-    ofxDatGuiLabel* day_label; 
+        ofxDatGuiLabel* main_label;
+        ofxDatGuiLabel* day_label;
         ofxDatGuiTheme* theme_;
+        ofxDatGuiScrollView* scroll;
+        ofxDatGuiScrollView* g_scroll;
     
     // Buttons for Main Dropdown
         ofxDatGuiButton* main_b_;
         ofxDatGuiButton* break_b_;
         ofxDatGuiButton* easy_b_;
         ofxDatGuiButton* hard_b_;
-    ofxDatGuiButton* grocery_b; 
+        ofxDatGuiButton* clear_b;
+        ofxDatGuiButton* done_btn;
+        ofxDatGuiButton* grocery_b;
+    
         ofxDatGuiDropdown* dropdown;
         ofxDatGuiTextInput* input;
     
-    // Functions to set position of drop down menus
-        void SetPositionOfDrop(); 
-    
-    // Functions For Buttons on Dropdown
+    // Functions For Buttons
         void onButtonEvent(ofxDatGuiButtonEvent e);
         std::vector<Recipes> PressedMain();
         std::vector<Recipes> PressedBreakfast();
@@ -47,34 +54,14 @@ private:
     
     // Function for dropdown
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
-        void SetVisibility(int num);
     
     // Function for text input
-    void onTextInputEvent(ofxDatGuiTextInputEvent e);
+        void onTextInputEvent(ofxDatGuiTextInputEvent e);
     
     // Main Recipe Scroll
-        ofxDatGuiScrollView* scroll;
         void onScrollViewEvent(ofxDatGuiScrollViewEvent e);
-        ofxDatGuiButton* addItem;
-        void onAddNewItemButtonClick(ofxDatGuiButtonEvent e);
         void ShowRecipes(std::vector<Recipes> r);
     
-    // Dropdown for Each Day
-        ofxDatGuiDropdown* m_drop;
-        ofxDatGuiDropdown* t_drop;
-        ofxDatGuiDropdown* w_drop;
-        ofxDatGuiDropdown* r_drop;
-        ofxDatGuiDropdown* f_drop;
-        ofxDatGuiDropdown* s_drop;
-        ofxDatGuiDropdown* ss_drop;
-        //ofxDatGuiDropdown* g_drop;
-    
-        ofxDatGuiScrollView* g_scroll; 
-    
-    // Function to add Recipe to scroll day
-        void AddRecipe(int num);
-        ofxDatGuiButton* done_btn;
-    void AddIngredients();
-    
-    int day;
+    // Function to add ingredients for grocery
+        void AddIngredients();
 };

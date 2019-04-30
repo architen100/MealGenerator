@@ -12,6 +12,7 @@
 #include <vector>
 #include <iostream>
 #include "recipes.hpp"
+#include <fstream>
 
 
 #endif /* library_hpp */
@@ -33,5 +34,6 @@ private:
     // Filtering methods
     std::vector<Recipes> FilterType(std::string type);
     std::vector<Recipes> FilterDifficulty(std::string diff);
-    std::vector<Recipes> FilterIngredients(std::string i); 
+    std::vector<Recipes> FilterIngredients(std::string i);
+    std::vector<std::string> GetGroceryList(std::vector<std::vector<std::string>> recipe_add, Library library_);
 };
