@@ -18,17 +18,17 @@ private:
 		void draw();
     
         // Global Variables
-        std::vector<std::vector<string>> recipe_add;
+        std::vector<std::vector<string>> recipe_add_;
         std::vector<Recipes> to_return_;
-        std::vector<string> grocery_list;
-        vector<string> options = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Grocery List"};
+        std::vector<string> grocery_list_;
+        vector<string> options_ = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Grocery List"};
     
         ofxDatGuiScrollView* day_scroll_;
     
     // Functions/Variables For Project
-        ofxDatGui* gui;
-        ofxDatGuiLabel* main_label;
-        ofxDatGuiLabel* day_label;
+        ofxDatGui* gui_;
+        ofxDatGuiLabel* main_label_;
+        ofxDatGuiLabel* day_label_;
         ofxDatGuiTheme* theme_;
         ofxDatGuiScrollView* scroll;
         ofxDatGuiScrollView* g_scroll;
@@ -38,12 +38,12 @@ private:
         ofxDatGuiButton* break_b_;
         ofxDatGuiButton* easy_b_;
         ofxDatGuiButton* hard_b_;
-        ofxDatGuiButton* clear_b;
-        ofxDatGuiButton* done_btn;
-        ofxDatGuiButton* grocery_b;
+        ofxDatGuiButton* clear_b_;
+        ofxDatGuiButton* done_btn_;
+        ofxDatGuiButton* grocery_b_;
     
-        ofxDatGuiDropdown* dropdown;
-        ofxDatGuiTextInput* input;
+        ofxDatGuiDropdown* dropdown_;
+        ofxDatGuiTextInput* input_;
     
     // Functions For Buttons
         void onButtonEvent(ofxDatGuiButtonEvent e);
