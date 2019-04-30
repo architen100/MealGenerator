@@ -21,7 +21,7 @@ void ofApp::setup(){
 
     day_scroll_ = new ofxDatGuiScrollView("Menu", 8);
     
-    day_scroll_ -> setPosition(ofGetScreenWidth()/2 - day_scroll_-> getWidth() - 50, ofGetScreenHeight()/2 - day_scroll_-> getHeight()/2);
+    day_scroll_ -> setPosition(ofGetScreenWidth()/2 - day_scroll_ -> getWidth() - 350, 500);
     
     gui -> setTheme(new ofxDatGuiThemeAutumn);
     
@@ -46,7 +46,7 @@ void ofApp::setup(){
     // Creating my ScrollMenu to hold my recipes
     scroll = new ofxDatGuiScrollView("Recipes", 8);
     g_scroll = new ofxDatGuiScrollView("Grocery", 8);
-    g_scroll -> setPosition(ofGetScreenWidth()/2 - g_scroll -> getWidth() - 50, 0);
+    g_scroll -> setPosition(ofGetScreenWidth()/2 - g_scroll-> getWidth() + 300 , 500);
     
     g_scroll -> setBackgroundColor(ofColor(0xB5BCB2));
     
@@ -102,25 +102,30 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     if (e.target->getLabel() == "main") {
         std::vector<Recipes> r = PressedMain();
         scroll -> clear();
+        scroll -> add("Available Recipes");
         ShowRecipes(r);
     }
     if (e.target -> getLabel() == "breakfast") {
         std::vector<Recipes> r = PressedBreakfast();
         scroll -> clear();
+        scroll -> add("Available Recipes");
         ShowRecipes(r);
     }
     if (e.target -> getLabel() == "easy") {
         std::vector<Recipes> r = PressedEasy();
         scroll -> clear();
+        scroll -> add("Available Recipes");
         ShowRecipes(r);
     }
     if (e.target -> getLabel() == "hard") {
         std::vector<Recipes> r = PressedHard();
         scroll -> clear();
+        scroll -> add("Available Recipes");
         ShowRecipes(r);
     }
     if (e.target -> getLabel() == "Finish Adding") {
         day_scroll_ -> clear();
+        day_scroll_ -> add("Menu For Day");
         for (int i = 0; i < recipe_add[day_].size(); i++) {
             day_scroll_ -> add(recipe_add[day_][i]);
         }
@@ -128,6 +133,7 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     
     if (e.target -> getLabel() == "Grocery") {
         grocery_list = library_.GetGroceryList(recipe_add, library_);
+        g_scroll -> add("Grocery List");
         g_scroll -> setTheme(new ofxDatGuiThemeAutumn);
         for (int i = 0; i < grocery_list.size(); i++) {
             g_scroll -> add(grocery_list[i]);
