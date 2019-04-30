@@ -53,5 +53,8 @@ Changed my JSON structure so that type is a string instead of an array
     - Had to create a 2d vector to keep track of my exisiting recipes for each day 
 - Created a scroll view menu to keep track of the grocery list instead of a drop down menu 
     - Having trouble making the scroll view menu appear and disappear 
-    
+    - Fixed by setting the background of my gui to a color first 
+- Made changes to the layout of my code 
+    - Moved my parser function to another class 
+    - Moved all my non-gui functions to my library class 
 
